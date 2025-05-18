@@ -49,7 +49,29 @@ Build
 cargo build --releasecargo build --release
 ```
 
-5.
+5. Set config
+```bash
+rm -rf $HOME/0g-storage-node/run/config.toml
+curl -o $HOME/0g-storage-node/run/config.toml https://raw.githubusercontent.com/fallblight/Storage-Node-Zero-Gravity-0G/main/config.toml
+```
+``Open config.toml and input your evm private key without "0X"
+```bash
+
+```
+``
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
