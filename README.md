@@ -46,7 +46,7 @@ git submodule update --init
 
 Build
 ```bash
-cargo build --releasecargo build --release
+cargo build --release
 ```
 
 5. Set config
