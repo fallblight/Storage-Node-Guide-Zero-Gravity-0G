@@ -1,4 +1,4 @@
-# Storage-Node-Zero-Gravity-0G
+# Storage-Node-Guide-Zero-Gravity-0G
 
 **Hardware Requirement**
 
