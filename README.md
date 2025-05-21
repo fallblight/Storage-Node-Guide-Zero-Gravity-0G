@@ -107,8 +107,8 @@ while true; do
     sleep 5;
 done
 ```
-
-# Stop storage node
+#
+### Stop storage node
 ```bash
 sudo systemctl stop zgs
 ```
