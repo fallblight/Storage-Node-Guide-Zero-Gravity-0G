@@ -54,11 +54,72 @@ cargo build --releasecargo build --release
 rm -rf $HOME/0g-storage-node/run/config.toml
 curl -o $HOME/0g-storage-node/run/config.toml https://raw.githubusercontent.com/fallblight/Storage-Node-Zero-Gravity-0G/main/config.toml
 ```
-``Open config.toml and input your evm private key without "0X"
+Open config.toml and input your evm private key without "0X"
 ```bash
-
+nano $HOME/0g-storage-node/run/config.toml
 ```
-``
+
+6. Create service
+```bash
+sudo tee /etc/systemd/system/zgs.service > /dev/null <<EOF
+[Unit]
+Description=ZGS Node
+After=network.target
+
+[Service]
+User=$USER
+WorkingDirectory=$HOME/0g-storage-node/run
+ExecStart=$HOME/0g-storage-node/target/release/zgs_node --config $HOME/0g-storage-node/run/config.toml
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+7. Start node
+```bash
+sudo systemctl daemon-reload && \
+sudo systemctl enable zgs && \
+sudo systemctl restart zgs && \
+sudo systemctl status zgs
+```
+
+8. Check logs
+
+Full logs
+```bash
+tail -f ~/0g-storage-node/run/log/zgs.log.$(TZ=UTC date +%Y-%m-%d)
+```
+Hit logs
+```bash
+tail -f ~/0g-storage-node/run/log/zgs.log.$(TZ=UTC date +%Y-%m-%d) | grep hit
+```
+9. Check local block
+```bash
+while true; do
+    response=$(curl -s -X POST http://localhost:5678 -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"zgs_getStatus","params":[],"id":1}')
+    logSyncHeight=$(echo $response | jq '.result.logSyncHeight')
+    connectedPeers=$(echo $response | jq '.result.connectedPeers')
+    echo -e "logSyncHeight: \033[32m$logSyncHeight\033[0m, connectedPeers: \033[34m$connectedPeers\033[0m"
+    sleep 5;
+done
+```
+
+# Stop storage node
+```bash
+sudo systemctl stop zgs
+```
+
+Delete storage node
+```bash
+sudo systemctl disable zgs
+sudo rm /etc/systemd/system/zgs.service
+rm -rf $HOME/0g-storage-node
+```
+
 
 
 
