@@ -54,9 +54,13 @@ cargo build --releasecargo build --release
 rm -rf $HOME/0g-storage-node/run/config.toml
 curl -o $HOME/0g-storage-node/run/config.toml https://raw.githubusercontent.com/fallblight/Storage-Node-Zero-Gravity-0G/main/config.toml
 ```
-Open config.toml and input your evm private key without "0X"
+Input your evm private key without "0X"
 ```bash
-nano $HOME/0g-storage-node/run/config.toml
+printf '\033[34mEnter your private key: \033[0m' && read EVM_PRIVATE_KEY
+```
+Save config
+```bash
+sed -i 's|^\s*#\?\s*miner_key\s*=.*|miner_key = "'"$EVM_PRIVATE_KEY"'"|' $HOME/0g-storage-node/run/config.toml && echo -e "\033[32mPrivate key has been successfully added to the config file.\033[0m"
 ```
 
 6. Create service
