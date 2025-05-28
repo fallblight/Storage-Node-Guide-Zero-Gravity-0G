@@ -188,7 +188,7 @@ mine_contract_address = "0x3A0d1d67497Ad770d6f72e7f4B8F0BAbaa2A649C"
 # If this limit is reached, the node will update its `shard_position`
 # and store only half data.
 #
-db_max_num_sectors = 4000000000
+# db_max_num_sectors = 4000000000
 
 # The format is <shard_id>/<shard_number>, where the shard number is 2^n.
 # This only applies if there is no stored shard config in db.
@@ -224,25 +224,25 @@ reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
 ###                   Router Config Options                         ###
 #######################################################################
 
-[router]
+# [router]
 
 # Timeout to publish file announcements in batch.
 # batcher_timeout = "1s"
 
 # Number of files in an announcement to publish in batch.
-batcher_file_capacity = 10
+# batcher_file_capacity = 10
 
 # Number of announcements in a pubsub message to publish in batch.
-batcher_announcement_capacity = 100
+# batcher_announcement_capacity = 100
 
 #######################################################################
 ###                   File Sync Config Options                      ###
 #######################################################################
-[sync]
+# [sync]
 
 # Enable file sync among peers automatically. When enabled, each node will store
 # all files, and sufficient disk space is required.
-auto_sync_enabled = true
+# auto_sync_enabled = true
 
 #  Maximum number of files in sync from other peers simultaneously.
 # max_sync_files = 16
