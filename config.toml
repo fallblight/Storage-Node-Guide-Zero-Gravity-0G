@@ -33,7 +33,7 @@
 
 # List of nodes to bootstrap UDP discovery. Note, `network_enr_address` should be
 # configured as well to enable UDP discovery.
-network_boot_nodes = ["/ip4/47.251.79.83/udp/1234/p2p/16Uiu2HAkvJYQABP1MdvfWfUZUzGLx1sBSDZ2AT92EFKcMCCPVawV", "/ip4/47.251.78.104/udp/1234/p2p/16Uiu2HAmSe9UWdHrqkn2mKh99b9DwYZZcea6krfidtU3e5tiHiwN", "/ip4/47.251.117.133/udp/1234/p2p/16Uiu2HAmTVDGNhkHD98zDnJxQWu3i1FL1aFYeh9wiQTNu4pDCgps", "/ip4/47.76.61.226/udp/1234/p2p/16Uiu2HAm2k6ua2mGgvZ8rTMV8GhpW71aVzkQWy7D37TTDuLCpgmX", "/ip4/47.238.87.44/udp/1234/p2p/16Uiu2HAmFGsLoajQdEds6tJqsLX7Dg8bYd2HWR4SbpJUut4QXqCj", "/ip4/47.76.30.235/udp/1234/p2p/16Uiu2HAm5tCqwGtXJemZqBhJ9JoQxdDgkWYavfCziaqaAYkGDSfU"]
+network_boot_nodes = ["/ip4/47.251.117.133/udp/1234/p2p/16Uiu2HAmTVDGNhkHD98zDnJxQWu3i1FL1aFYeh9wiQTNu4pDCgps","/ip4/47.76.61.226/udp/1234/p2p/16Uiu2HAm2k6ua2mGgvZ8rTMV8GhpW71aVzkQWy7D37TTDuLCpgmX","/ip4/47.251.79.83/udp/1234/p2p/16Uiu2HAkvJYQABP1MdvfWfUZUzGLx1sBSDZ2AT92EFKcMCCPVawV", "/ip4/47.238.87.44/udp/1234/p2p/16Uiu2HAmFGsLoajQdEds6tJqsLX7Dg8bYd2HWR4SbpJUut4QXqCj", "/ip4/47.251.78.104/udp/1234/p2p/16Uiu2HAmSe9UWdHrqkn2mKh99b9DwYZZcea6krfidtU3e5tiHiwN", "/ip4/47.76.30.235/udp/1234/p2p/16Uiu2HAm5tCqwGtXJemZqBhJ9JoQxdDgkWYavfCziaqaAYkGDSfU"]
 
 # List of libp2p nodes to initially connect to.
 # network_libp2p_nodes = []
@@ -157,15 +157,18 @@ log_sync_start_block_number = 326165
 ###                     Mine Config Options                         ###
 #######################################################################
 
-# Mine contract address for incentive.
+# Mine contract address for PoRA.
 mine_contract_address = "0x3A0d1d67497Ad770d6f72e7f4B8F0BAbaa2A649C"
+
+# Reward contract address for incentive.
+reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
 
 # Miner key is used to sign blockchain transaction for incentive.
 # The value should be a hex string of length 64 without 0x prefix.
 #
 # Note, the corresponding address should have enough tokens to pay
 # transaction gas fee.
-# miner_key = ""
+miner_key = ""
 
 # Period for querying mine context on chain (in seconds)
 #
@@ -188,13 +191,12 @@ mine_contract_address = "0x3A0d1d67497Ad770d6f72e7f4B8F0BAbaa2A649C"
 # If this limit is reached, the node will update its `shard_position`
 # and store only half data.
 #
-# db_max_num_sectors = 4000000000
+# db_max_num_sectors = 1000000000
 
 # The format is <shard_id>/<shard_number>, where the shard number is 2^n.
 # This only applies if there is no stored shard config in db.
 # shard_position = "0/2"
 
-reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
 # The time interval to check if we should half `shard_position` to prune data.
 #
 # prune_check_time_s = 60
@@ -230,10 +232,10 @@ reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
 # batcher_timeout = "1s"
 
 # Number of files in an announcement to publish in batch.
-# batcher_file_capacity = 10
+# batcher_file_capacity = 1
 
 # Number of announcements in a pubsub message to publish in batch.
-# batcher_announcement_capacity = 100
+# batcher_announcement_capacity = 1
 
 #######################################################################
 ###                   File Sync Config Options                      ###
@@ -242,7 +244,7 @@ reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
 
 # Enable file sync among peers automatically. When enabled, each node will store
 # all files, and sufficient disk space is required.
-# auto_sync_enabled = true
+# auto_sync_enabled = false
 
 #  Maximum number of files in sync from other peers simultaneously.
 # max_sync_files = 16
