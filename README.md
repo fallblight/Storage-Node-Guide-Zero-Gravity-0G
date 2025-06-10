@@ -122,7 +122,8 @@ done
 
 ## Helpful commands
 
-Change RPC
+### Change RPC
+1. Enter RPC URL
 ```bash
 while true; do
     printf '\033[34mEnter RPC URL: \033[0m'
@@ -137,7 +138,7 @@ while true; do
     fi
 done
 ```
-### Save RPC
+2. Save RPC
 ```bash
 sed -i "s|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = \"$RPC_URL\"|" "$HOME/0g-storage-node/run/config.toml" && \
 echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
