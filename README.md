@@ -139,7 +139,8 @@ done
 ```
 Save RPC
 ```bash
-sed -i 's|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = ""$RPC_URL"'"|' $HOME/0g-storage-node/run/config.toml && echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
+sed -i "s|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = \"$RPC_URL\"|" "$HOME/0g-storage-node/run/config.toml" && \
+echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
 ```
 
 #
