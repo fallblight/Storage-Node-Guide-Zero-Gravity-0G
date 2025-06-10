@@ -137,12 +137,17 @@ while true; do
     fi
 done
 ```
-Save RPC
+### Save RPC
 ```bash
 sed -i "s|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = \"$RPC_URL\"|" "$HOME/0g-storage-node/run/config.toml" && \
 echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
 ```
-Auto-delete old logs older than 24 hours
+### Auto-delete old logs older than 24 hours
+1. Open a screen
+```bash
+screen -S 0g-delete-logs
+```
+2. Paste this code
 ```bash
 #!/bin/bash
 
