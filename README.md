@@ -56,7 +56,15 @@ curl -o $HOME/0g-storage-node/run/config.toml https://raw.githubusercontent.com/
 ```
 Input your evm private key without "0X"
 ```bash
-printf '\033[34mEnter your private key: \033[0m' && read EVM_PRIVATE_KEY
+while true; do
+    printf '\033[34mEnter your private key (64 alphanumeric chars): \033[0m'
+    read EVM_PRIVATE_KEY
+    if [[ $EVM_PRIVATE_KEY =~ ^[A-Za-z0-9]{64}$ ]]; then
+        break
+    else
+        echo -e "\033[31mInvalid input. Please enter exactly 64 alphanumeric characters.\033[0m"
+    fi
+done
 ```
 Save config
 ```bash
