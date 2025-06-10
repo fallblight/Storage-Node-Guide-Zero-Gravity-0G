@@ -142,7 +142,19 @@ Save RPC
 sed -i "s|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = \"$RPC_URL\"|" "$HOME/0g-storage-node/run/config.toml" && \
 echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
 ```
+Auto-delete old logs older than 24 hours
+```bash
+#!/bin/bash
 
+LOG_DIR="/home/ubuntu/0g-storage-node/run/log"
+
+while true; do
+    echo "[$(date)] Deleting files older than 24 hours in $LOG_DIR..."
+    find "$LOG_DIR" -type f -mtime +0 -delete
+    echo "[$(date)] Old files deleted. Sleeping for 24 hours..."
+    sleep 86400
+done
+```
 #
 ### Stop storage node
 ```bash
