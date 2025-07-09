@@ -58,17 +58,16 @@ Input your evm private key without "0X"
 ```bash
 while true; do
     printf '\033[34mEnter your private key (64 alphanumeric chars): \033[0m'
-    read EVM_PRIVATE_KEY
+    read -s EVM_PRIVATE_KEY
+
     if [[ $EVM_PRIVATE_KEY =~ ^[A-Za-z0-9]{64}$ ]]; then
+        sed -i "s|^\s*#\?\s*miner_key\s*=.*|miner_key = \"$EVM_PRIVATE_KEY\"|" "$HOME/0g-storage-node/run/config.toml" && \
+        echo -e "\033[32mPrivate key has been successfully added to the config file.\033[0m"
         break
     else
         echo -e "\033[31mInvalid input. Please enter exactly 64 alphanumeric characters.\033[0m"
     fi
 done
-```
-Save config
-```bash
-sed -i 's|^\s*#\?\s*miner_key\s*=.*|miner_key = "'"$EVM_PRIVATE_KEY"'"|' $HOME/0g-storage-node/run/config.toml && echo -e "\033[32mPrivate key has been successfully added to the config file.\033[0m"
 ```
 
 6. Create service
@@ -133,25 +132,23 @@ done
 ## Helpful commands
 
 ### Change RPC
-1. Enter RPC URL
 ```bash
 while true; do
     printf '\033[34mEnter RPC URL: \033[0m'
     read RPC_URL
 
-    RPC_URL=$(echo "$RPC_URL" | xargs)
+    RPC_URL=$(echo "$RPC_URL" | xargs)  # Trim spaces
 
     if [[ "$RPC_URL" =~ ^https?:// ]]; then
+        sed -i "s|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = \"$RPC_URL\"|" "$HOME/0g-storage-node/run/config.toml" && \
+        echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
         break
     else
         echo -e "\033[31mInvalid RPC URL. It must start with http:// or https:// and have no leading spaces.\033[0m"
     fi
 done
 ```
-2. Save RPC
-```bash
-sed -i "s|^\s*#\?\s*blockchain_rpc_endpoint\s*=.*|blockchain_rpc_endpoint = \"$RPC_URL\"|" "$HOME/0g-storage-node/run/config.toml" && \
-echo -e "\033[32mRPC URL has been successfully added to the config file.\033[0m"
+33[32mRPC URL has been successfully added to the config file.\033[0m"
 ```
 ### Auto-delete old logs older than 24 hours
 1. Open a screen
