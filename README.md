@@ -11,6 +11,7 @@ Bandwidth: 500 MBps for Download / Upload
 ```bash
 sudo apt-get update 
 sudo apt-get install clang cmake build-essential openssl pkg-config libssl-dev
+sudo apt install protobuf-compiler
 ```
 
 2. Install Go
@@ -40,7 +41,7 @@ cd $HOME
 rm -rf 0g-storage-node
 git clone https://github.com/0glabs/0g-storage-node.git
 cd 0g-storage-node
-git checkout v1.0.0
+git checkout v1.1.0
 git submodule update --init
 ```
 
