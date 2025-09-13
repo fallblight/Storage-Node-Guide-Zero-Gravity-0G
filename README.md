@@ -141,6 +141,7 @@ while true; do
 done
 ```
 #
+## WARNING - RESET INSTALLATION
 ### Stop storage node
 ```bash
 sudo systemctl stop zgs
