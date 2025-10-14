@@ -80,11 +80,11 @@ network_boot_nodes = ["/ip4/47.251.117.133/udp/1234/p2p/16Uiu2HAmTVDGNhkHD98zDnJ
 blockchain_rpc_endpoint = "https://evmrpc-testnet.0g.ai"
 
 # Flow contract address to sync event logs.
-log_contract_address = "0xbD75117F80b4E22698D0Cd7612d92BDb8eaff628"
+log_contract_address = "0x62D4144dB0F0a6fBBaeb6296c785C71B3D57C526"
 
 # Block number to sync event logs from blockchain. Generally, this is
 # the block number when flow contract deployed.
-log_sync_start_block_number = 326165
+log_sync_start_block_number = 0
 
 # Number of blocks to confirm a transaction.
 # confirmation_block_count = 3
@@ -158,10 +158,10 @@ log_sync_start_block_number = 326165
 #######################################################################
 
 # Mine contract address for PoRA.
-mine_contract_address = "0x3A0d1d67497Ad770d6f72e7f4B8F0BAbaa2A649C"
+mine_contract_address = "0xCd01c5Cd953971CE4C2c9bFb95610236a7F414fe"
 
 # Reward contract address for incentive.
-reward_contract_address = "0xd3D4D91125D76112AE256327410Dd0414Ee08Cb4"
+reward_contract_address = "0x457aC76B58ffcDc118AABD6DbC63ff9072880870"
 
 # Miner key is used to sign blockchain transaction for incentive.
 # The value should be a hex string of length 64 without 0x prefix.
