@@ -6,7 +6,7 @@ while true; do
       -d '{"jsonrpc":"2.0","method":"zgs_getStatus","params":[],"id":1}')
     logSyncHeight=$(echo $response | jq '.result.logSyncHeight')
     connectedPeers=$(echo $response | jq '.result.connectedPeers')
-    networkHeight=$(curl -s -X POST https://evmrpc-testnet.0g.ai \
+    networkHeight=$(curl -s -X POST https://evmrpc.0g.ai \
       -H "Content-Type: application/json" \
       -d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
       | jq -r '.result' | xargs printf "%d")
